@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import './style.css'; // ✅ this is normal CSS, not a CSS module
+import './style.css'; 
 
 export default function ApplyPage() {
   const [form, setForm] = useState({ name: '', email: '', jobTitle: '' });
@@ -12,7 +12,7 @@ export default function ApplyPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch('http://localhost:5000/api/interview-requests', {
+    const res = await fetch('https://basal.onrender.com/api/interview-requests', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form),
@@ -21,7 +21,7 @@ export default function ApplyPage() {
   };
 
   if (submitted)
-    return <div className="successMessage">Thank you for applying!</div>; // ✅ plain className
+    return <div className="successMessage">Thank you for applying!</div>;
 
   return (
     <form onSubmit={handleSubmit} className="formContainer">

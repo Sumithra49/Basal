@@ -7,21 +7,21 @@ export default function RecruiterPage() {
   const [requests, setRequests] = useState([]);
 
   const fetchRequests = async () => {
-    const res = await fetch('http://localhost:5000/api/interview-requests');
+    const res = await fetch('https://basal.onrender.com/api/interview-requests');
     const data = await res.json();
     setRequests(data);
   };
 
   const acceptRequest = async (id) => {
-    await fetch(`http://localhost:5000/api/interview-requests/${id}/accept`, {
+    await fetch(`https://basal.onrender.com/api/interview-requests/${id}/accept`, {
       method: 'PUT',
     });
-    fetchRequests(); // Refresh data
+    fetchRequests(); 
   };
 
   useEffect(() => {
     fetchRequests();
-    const interval = setInterval(fetchRequests, 5000); // Poll every 5s
+    const interval = setInterval(fetchRequests, 5000); s
     return () => clearInterval(interval);
   }, []);
 
